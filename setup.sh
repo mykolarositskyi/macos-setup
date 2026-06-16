@@ -116,6 +116,7 @@ brew_install node
 brew_install starship
 brew_install gh
 brew_install fnm
+brew_install pnpm
 brew_install awscli
 
 ZSHRC="$HOME/.zshrc"
@@ -292,6 +293,7 @@ echo "  ✔  Homebrew               installed / updated"
 echo "  ✔  git                    $(git --version 2>/dev/null | head -1)"
 echo "  ✔  node                   $(node --version 2>/dev/null)"
 echo "  ✔  fnm                    $(fnm --version 2>/dev/null | head -1)"
+echo "  ✔  pnpm                   $(pnpm --version 2>/dev/null | head -1)"
 echo "  ✔  gh                     $(gh --version 2>/dev/null | head -1)"
 echo "  ✔  awscli                 $(aws --version 2>/dev/null | head -1)"
 echo "  ✔  starship               prompt configured"
