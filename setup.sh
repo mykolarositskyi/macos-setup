@@ -68,6 +68,7 @@ echo ""
 
 confirm "Databases  (PostgreSQL, Redis + GUI tools: Beekeeper Studio, Redis Insight)?" && INSTALL_DB=true       || INSTALL_DB=false
 confirm "Dev tools  (Zed, iTerm2, Postman, ngrok)?"                                   && INSTALL_DEV=true      || INSTALL_DEV=false
+confirm "NestJS CLI (latest, via npm)?"                                                && INSTALL_NESTJS=true   || INSTALL_NESTJS=false
 confirm "AI         (Claude Code)?"                                                    && INSTALL_AI=true       || INSTALL_AI=false
 confirm "Communication  (Slack, Telegram, Threema beta, Spark Mail)?"                 && INSTALL_COMMS=true    || INSTALL_COMMS=false
 confirm "Design     (Figma)?"                                                          && INSTALL_DESIGN=true   || INSTALL_DESIGN=false
@@ -208,7 +209,20 @@ if [[ "$INSTALL_DEV" == true ]]; then
 fi
 
 # =============================================================================
-# 9. AI — Claude Code
+# 9. NestJS CLI
+# =============================================================================
+if [[ "$INSTALL_NESTJS" == true ]]; then
+  section "NestJS CLI"
+  if command -v nest &>/dev/null; then
+    log "NestJS CLI found — updating to latest..."
+  else
+    log "Installing NestJS CLI (latest) via npm..."
+  fi
+  npm install -g @nestjs/cli@latest
+fi
+
+# =============================================================================
+# 10. AI — Claude Code
 # =============================================================================
 if [[ "$INSTALL_AI" == true ]]; then
   section "Claude Code"
@@ -221,7 +235,7 @@ if [[ "$INSTALL_AI" == true ]]; then
 fi
 
 # =============================================================================
-# 10. Communication
+# 11. Communication
 # =============================================================================
 if [[ "$INSTALL_COMMS" == true ]]; then
   section "Communication"
@@ -232,7 +246,7 @@ if [[ "$INSTALL_COMMS" == true ]]; then
 fi
 
 # =============================================================================
-# 11. Design
+# 12. Design
 # =============================================================================
 if [[ "$INSTALL_DESIGN" == true ]]; then
   section "Design"
@@ -240,7 +254,7 @@ if [[ "$INSTALL_DESIGN" == true ]]; then
 fi
 
 # =============================================================================
-# 12. Entertainment
+# 13. Entertainment
 # =============================================================================
 if [[ "$INSTALL_ENTERTAINMENT" == true ]]; then
   section "Entertainment"
@@ -248,7 +262,7 @@ if [[ "$INSTALL_ENTERTAINMENT" == true ]]; then
 fi
 
 # =============================================================================
-# 13. SSH Key
+# 14. SSH Key
 # =============================================================================
 section "SSH Key"
 
@@ -302,6 +316,7 @@ echo "  ✔  SSH key                ~/.ssh/id_ed25519"
 [[ "$INSTALL_DB" == true ]]            && echo "  ✔  PostgreSQL + Redis     running as services"
 [[ "$INSTALL_DB" == true ]]            && echo "  ✔  Beekeeper + RedisInsight  installed"
 [[ "$INSTALL_DEV" == true ]]           && echo "  ✔  iTerm2, Zed, Postman, ngrok, Docker, Chrome  installed"
+[[ "$INSTALL_NESTJS" == true ]]        && echo "  ✔  NestJS CLI             $(nest --version 2>/dev/null || echo 'installed')"
 [[ "$INSTALL_AI" == true ]]            && echo "  ✔  Claude Code            $(claude --version 2>/dev/null || echo 'installed')"
 [[ "$INSTALL_COMMS" == true ]]         && echo "  ✔  Slack, Telegram, Threema, Spark Mail  installed"
 [[ "$INSTALL_DESIGN" == true ]]        && echo "  ✔  Figma                  installed"

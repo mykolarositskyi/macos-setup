@@ -21,6 +21,7 @@ It asks what you want upfront, then runs unattended.
 
 - **Databases** — PostgreSQL 17, Redis, Beekeeper Studio, RedisInsight
 - **Dev tools** — Zed, iTerm2, Postman, ngrok, Docker, Chrome
+- **NestJS CLI** — latest, installed globally via npm
 - **AI** — Claude Code
 - **Communication** — Slack, Telegram, Threema, Spark Mail
 - **Design** — Figma
